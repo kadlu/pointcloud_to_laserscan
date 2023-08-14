@@ -32,6 +32,6 @@ def generate_launch_description():
             name='laserscan_to_pointcloud',
             remappings=[('scan_in', [LaunchConfiguration(variable_name='scanner'), '/scan']),
                         ('cloud', [LaunchConfiguration(variable_name='scanner'), '/cloud'])],
-            parameters=[{'target_frame': 'scan', 'transform_tolerance': 0.01}]
+            parameters=[{'target_frame': 'lidar', 'transform_tolerance': 0.01}]
         ),
     ])
