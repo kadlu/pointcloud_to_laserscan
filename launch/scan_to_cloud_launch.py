@@ -19,7 +19,7 @@ def generate_launch_description():
                 '--qos-profile', 'sensor_data',
                 [LaunchConfiguration(variable_name='scanner'), '/scan'],
                 'sensor_msgs/msg/LaserScan', yaml.dump({
-                    'header': {'frame_id': 'scan'}, 'angle_min': -1.0,
+                    'header': {'frame_id': 'laser'}, 'angle_min': -1.0,
                     'angle_max': 1.0, 'angle_increment': 0.1, 'range_max': 10.0,
                     'ranges': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
                 })
@@ -32,6 +32,6 @@ def generate_launch_description():
             name='laserscan_to_pointcloud',
             remappings=[('scan_in', [LaunchConfiguration(variable_name='scanner'), '/scan']),
                         ('cloud', [LaunchConfiguration(variable_name='scanner'), '/cloud'])],
-            parameters=[{'target_frame': 'lidar', 'transform_tolerance': 0.01}]
+            parameters=[{'target_frame': 'laser', 'transform_tolerance': 0.01}]
         ),
     ])
